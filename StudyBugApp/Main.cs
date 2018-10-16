@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace CST8334_StudyBugApp
+namespace StudyBugApp
 {
     public class Application
     {

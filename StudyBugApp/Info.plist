@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>CST8334_StudyBugApp</string>
+    <string>StudyBugApp</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.CST8334_StudyBugApp</string>
+    <string>com.companyname.StudyBugApp</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
     <key>CFBundleVersion</key>
