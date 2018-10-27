@@ -20,15 +20,31 @@ namespace StudyBugApp
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton createNewUser { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField emailField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton facebookLogin { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField passwordField { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel signInWithFacebook { get; set; }
+
         [Action ("BtnLogIn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnLogIn_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("FacebookLogin_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void FacebookLogin_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -37,14 +53,29 @@ namespace StudyBugApp
                 btnLogIn = null;
             }
 
+            if (createNewUser != null) {
+                createNewUser.Dispose ();
+                createNewUser = null;
+            }
+
             if (emailField != null) {
                 emailField.Dispose ();
                 emailField = null;
             }
 
+            if (facebookLogin != null) {
+                facebookLogin.Dispose ();
+                facebookLogin = null;
+            }
+
             if (passwordField != null) {
                 passwordField.Dispose ();
                 passwordField = null;
+            }
+
+            if (signInWithFacebook != null) {
+                signInWithFacebook.Dispose ();
+                signInWithFacebook = null;
             }
         }
     }

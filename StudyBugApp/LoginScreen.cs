@@ -1,56 +1,105 @@
 ﻿using Foundation;
 using System;
 using UIKit;
+using Xamarin.Auth;
+using System.Json;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// The main screen of the application. Includes ability to sign in with email, and Facebook, or sign up for account.
+    /// </summary>
     public partial class LoginScreen : UIViewController
     {
-        public LoginScreen (IntPtr handle) : base (handle)
-        {
-        }
 
-        public override void ViewDidLoad ()
+        protected LoginScreen(IntPtr handle) : base(handle)
         {
-            base.ViewDidLoad ();
-            // Perform any additional setup after loading the view, typically from a nib.
+            
         }
-
-        public override void DidReceiveMemoryWarning ()
+        public override void ViewDidLoad()
         {
-            base.DidReceiveMemoryWarning ();
-            // Release any cached data, images, etc that aren't in use.
+            base.ViewDidLoad();
         }
-
+        /// <summary>
+        /// Event handler for Facebook login button. Establishes connection to Facebook's authentication, opens new UI for login.
+        /// </summary>
+        /// <param name="sender"></param>
+        partial void FacebookLogin_TouchUpInside(UIButton sender)
+        {
+            var auth = new OAuth2Authenticator(clientId: "351547255592863", scope: "", authorizeUrl: new Uri("https://m.facebook.com/v3.1/dialog/oauth/"), redirectUrl: new Uri("http://www.facebook.com/connect/login_success.html"));
+            auth.Completed += Auth_Completed;
+            var ui = auth.GetUI();
+            PresentViewController(ui, true, null);
+        }
+        /// <summary>
+        /// Gets the authenticated user, and user information. This information will be used in database to store user data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Auth_Completed(object sender, AuthenticatorCompletedEventArgs e)
+        {
+            if (e.IsAuthenticated)
+            {
+                var request = new OAuth2Request("GET", new Uri("https://graph.facebook.com/me?fields=name,picture,cover,birthday"), null, e.Account);
+                var response = await request.GetResponseAsync();
+                var user = JsonValue.Parse(response.GetResponseText());
+                var fbName = user["name"];
+                var fbCover = user["cover"]["source"];
+                var fbProfile = user["picture"]["data"]["url"];
+                
+            }
+            DismissViewController(true, null);
+        }
+        public override void DidReceiveMemoryWarning()
+        {
+            base.DidReceiveMemoryWarning();
+            
+        }
+    
+    
         partial void BtnLogIn_TouchUpInside(UIButton sender)
         {
             if (!IsValidCredential())
             {
-                new UIAlertView("Error",
-                                "Username and password mismatched.",
-                                null,
-                                "OK",
-                                null).Show();
+                var errorAlertController = UIAlertController.Create("Error", "Invalid Username/Password entered. Please try again.", UIAlertControllerStyle.Alert);
+                errorAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                PresentViewController(errorAlertController, true, null);
+
             } else {
+                
                 this.PerformSegue("Push", this);
             }
         }
-
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-            base.PrepareForSegue(segue, sender);
-
-            var dashboard = segue.DestinationViewController as DashboardViewController;
-            dashboard.Name = emailField.Text;
-        }
-
+        /// <summary>
+        /// Validates the data. Both fields must have data entry, and that data must exist in database.
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidCredential()
         {
+            var valid = false;
             if (String.IsNullOrEmpty(emailField.Text.Trim()) ||
-               String.IsNullOrEmpty(passwordField.Text.Trim()))
-                return false;
+                String.IsNullOrEmpty(passwordField.Text.Trim()))
+            {
+                valid = false;
+            }
+            //else if (){
+                // check database to see if the user exists
+              
+            //}
+            else
+            {
+                valid = true;
+            }
+            
 
-            return true; // replace it with login validation
+            return valid;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+       
+
+        
     }
 }

@@ -25,19 +25,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="229" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password" misplaced="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="229" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
                                 <rect key="frame" x="100" y="475" width="215" height="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password" secureTextEntry="YES"/>
                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="475" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="108" y="578" width="198" height="30"/>
+                                <rect key="frame" x="108" y="541" width="198" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.83529411764705885" blue="0.15686274509803921" alpha="1"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -54,14 +54,37 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8425" translatesAutoresizingMaskIntoConstraints="NO" image="logo.jpg">
                                 <rect key="frame" x="0.0" y="161" width="414" height="222"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="11347" translatesAutoresizingMaskIntoConstraints="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
+                                <rect key="frame" x="243" y="595" width="28" height="30"/>
+                                <state key="normal" backgroundImage="facebook.jpg">
+                                    <color key="titleColor" colorSpace="calibratedRGB" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1"/>
+                                </state>
+                                <connections>
+                                    <action selector="FacebookLogin_TouchUpInside:" destination="BYZ-38-t0r" id="13775" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14583" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="142" y="599" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15135" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="128" y="654" width="159" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue id="21336" destination="21131" kind="show" identifier="CreateNewUser"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="tintColor" colorSpace="calibratedRGB" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1"/>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.996078431372549" green="0.996078431372549" blue="0.996078431372549" alpha="1"/>
                         <constraints>
                             <constraint id="231" firstItem="229" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80"/>
                             <constraint id="232" firstAttribute="trailingMargin" secondItem="229" secondAttribute="trailing" constant="79"/>
-                            <constraint id="8680" firstItem="475" firstAttribute="top" secondItem="229" secondAttribute="bottom" constant="76"/>
-                            <constraint id="8681" firstItem="wfy-db-euE" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="128"/>
                             <constraint id="8682" firstItem="475" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88"/>
                             <constraint id="8685" firstAttribute="trailingMargin" secondItem="475" secondAttribute="trailing" constant="88"/>
                             <constraint id="9463" firstAttribute="leadingMargin" secondItem="8425" secondAttribute="leading" constant="20"/>
@@ -73,6 +96,16 @@
                             <constraint id="11074" firstItem="228" firstAttribute="width" secondItem="229" secondAttribute="width"/>
                             <constraint id="11075" firstItem="228" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80"/>
                             <constraint id="11076" firstItem="228" firstAttribute="top" secondItem="8425" secondAttribute="bottom" constant="42"/>
+                            <constraint id="13235" firstItem="475" firstAttribute="top" secondItem="229" secondAttribute="bottom" constant="36"/>
+                            <constraint id="13236" firstItem="wfy-db-euE" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="165"/>
+                            <constraint id="15127" firstItem="14583" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="28"/>
+                            <constraint id="15128" firstItem="wfy-db-euE" firstAttribute="top" secondItem="14583" secondAttribute="bottom" constant="116"/>
+                            <constraint id="15129" firstAttribute="trailingMargin" secondItem="14583" secondAttribute="trailing" constant="159"/>
+                            <constraint id="15130" firstItem="14583" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="122"/>
+                            <constraint id="15131" firstAttribute="trailingMargin" secondItem="11347" secondAttribute="trailing" constant="123"/>
+                            <constraint id="15132" firstItem="11347" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="24"/>
+                            <constraint id="15133" firstItem="wfy-db-euE" firstAttribute="top" secondItem="11347" secondAttribute="bottom" constant="111"/>
+                            <constraint id="15134" firstItem="11347" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="223"/>
                         </constraints>
                     </view>
                     <connections>
@@ -80,6 +113,9 @@
                         <outlet property="passwordField" destination="229" id="name-outlet-229"/>
                         <outlet property="btnLogIn" destination="475" id="name-outlet-475"/>
                         <segue id="4363" destination="224" kind="show" identifier="Push"/>
+                        <outlet property="facebookLogin" destination="11347" id="name-outlet-11347"/>
+                        <outlet property="signInWithFacebook" destination="14583" id="name-outlet-14583"/>
+                        <outlet property="createNewUser" destination="15135" id="name-outlet-15135"/>
                     </connections>
                     <navigationItem id="5126" key="navigationItem" title="Home"/>
                 </viewController>
@@ -169,6 +205,7 @@
                                         </state>
                                     </button>
                                 </subviews>
+                                <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7133" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="241" y="458" width="100" height="100"/>
@@ -215,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="226" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="-42"/>
+            <point key="canvasLocation" x="645" y="8"/>
         </scene>
         <scene sceneID="5040">
             <objects>
@@ -230,11 +267,146 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5044" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-517" y="-130"/>
+            <point key="canvasLocation" x="-514" y="-21"/>
+        </scene>
+        <scene sceneID="21130">
+            <objects>
+                <viewController id="21131" sceneMemberID="viewController" customClass="CreateUserViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="21128"/>
+                        <viewControllerLayoutGuide type="bottom" id="21129"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="21132">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="23646" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email Address">
+                                <rect key="frame" x="100" y="424" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="23647" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Last Name">
+                                <rect key="frame" x="100" y="386" width="215" height="30"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="23648" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="108" y="570" width="198" height="30"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.83529411764705885" blue="0.15686274509803921" alpha="1"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="BtnLogIn_TouchUpInside:" destination="23650" id="23649" eventType="touchUpInside"/>
+                                    <action selector="SignUp_TouchUpInside:" destination="21131" id="29939" eventType="touchUpInside"/>
+                                    <segue id="32653" destination="224" kind="show" identifier="SignUp"/>
+                                </connections>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="23651" translatesAutoresizingMaskIntoConstraints="NO" placeholder="First Name">
+                                <rect key="frame" x="100" y="348" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="23652" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
+                                <rect key="frame" x="100" y="462" width="215" height="30"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password" secureTextEntry="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="23653" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Confirm Password">
+                                <rect key="frame" x="100" y="500" width="215" height="30"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password" secureTextEntry="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="23661" translatesAutoresizingMaskIntoConstraints="NO" image="logo.jpg">
+                                <rect key="frame" x="0.0" y="98" width="414" height="222"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="23665" firstItem="23661" firstAttribute="trailing" secondItem="21132" secondAttribute="trailingMargin" constant="20"/>
+                            <constraint id="23666" firstAttribute="leadingMargin" secondItem="23661" secondAttribute="leading" constant="20"/>
+                            <constraint id="23671" firstItem="23653" firstAttribute="width" secondItem="23651" secondAttribute="width"/>
+                            <constraint id="23672" firstItem="23652" firstAttribute="width" secondItem="23651" secondAttribute="width"/>
+                            <constraint id="23673" firstItem="23646" firstAttribute="width" secondItem="23651" secondAttribute="width"/>
+                            <constraint id="23674" firstItem="23647" firstAttribute="width" secondItem="23651" secondAttribute="width"/>
+                            <constraint id="23675" firstItem="23653" firstAttribute="height" secondItem="23651" secondAttribute="height"/>
+                            <constraint id="23676" firstItem="23652" firstAttribute="height" secondItem="23651" secondAttribute="height"/>
+                            <constraint id="23677" firstItem="23646" firstAttribute="height" secondItem="23651" secondAttribute="height"/>
+                            <constraint id="23678" firstItem="23647" firstAttribute="height" secondItem="23651" secondAttribute="height"/>
+                            <constraint id="23679" firstItem="23653" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23680" firstItem="23652" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23681" firstItem="23646" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23682" firstItem="23647" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23683" firstItem="23653" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23684" firstItem="23652" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23685" firstItem="23646" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23686" firstItem="23647" firstAttribute="leading" secondItem="23651" secondAttribute="leading"/>
+                            <constraint id="23687" firstItem="23653" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23688" firstItem="23652" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23689" firstItem="23646" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23690" firstItem="23647" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23691" firstItem="23653" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23692" firstItem="23652" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23693" firstItem="23646" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23694" firstItem="23647" firstAttribute="centerX" secondItem="23651" secondAttribute="centerX"/>
+                            <constraint id="23696" firstAttribute="bottom" secondItem="23661" secondAttribute="bottom" constant="416"/>
+                            <constraint id="23697" firstItem="23661" firstAttribute="top" secondItem="21132" secondAttribute="top" constant="98"/>
+                            <constraint id="24057" firstItem="23651" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24058" firstAttribute="trailingMargin" secondItem="23651" secondAttribute="trailing" constant="79"/>
+                            <constraint id="24059" firstItem="23651" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24060" firstItem="23651" firstAttribute="top" secondItem="23661" secondAttribute="bottom" constant="28"/>
+                            <constraint id="24061" firstItem="23647" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24063" firstAttribute="trailingMargin" secondItem="23647" secondAttribute="trailing" constant="79"/>
+                            <constraint id="24064" firstItem="23647" firstAttribute="top" secondItem="23651" secondAttribute="centerY" constant="23"/>
+                            <constraint id="24065" firstItem="23646" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24066" firstAttribute="trailingMargin" secondItem="23646" secondAttribute="trailing" constant="79"/>
+                            <constraint id="24067" firstItem="23646" firstAttribute="top" secondItem="23647" secondAttribute="bottom" constant="8"/>
+                            <constraint id="24068" firstItem="23652" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24069" firstAttribute="trailingMargin" secondItem="23652" secondAttribute="trailing" constant="79"/>
+                            <constraint id="24070" firstItem="23652" firstAttribute="top" secondItem="23646" secondAttribute="bottom" constant="8"/>
+                            <constraint id="24071" firstItem="23653" firstAttribute="leading" secondItem="21132" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="24072" firstAttribute="trailingMargin" secondItem="23653" secondAttribute="trailing" constant="79"/>
+                            <constraint id="24073" firstItem="23653" firstAttribute="top" secondItem="23652" secondAttribute="centerY" constant="23"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="23646" id="name-outlet-23646"/>
+                        <outlet property="lastName" destination="23647" id="name-outlet-23647"/>
+                        <outlet property="firstName" destination="23651" id="name-outlet-23651"/>
+                        <outlet property="password" destination="23652" id="name-outlet-23652"/>
+                        <outlet property="confirmPassword" destination="23653" id="name-outlet-23653"/>
+                        <outlet property="signUp" destination="23648" id="name-outlet-23648"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21133" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="958"/>
         </scene>
     </scenes>
     <resources>
         <image name="profile.jpeg" width="225" height="225"/>
         <image name="logo.jpg" width="1280" height="720"/>
+        <image name="facebook.jpg" width="250" height="250"/>
     </resources>
 </document>
