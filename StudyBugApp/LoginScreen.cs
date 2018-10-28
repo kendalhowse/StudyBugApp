@@ -11,7 +11,11 @@ namespace StudyBugApp
     /// </summary>
     public partial class LoginScreen : UIViewController
     {
-
+        public string fbID;
+        public string fbFirstName;
+        public string fbLastName;
+        public string fbProfile;
+       
         protected LoginScreen(IntPtr handle) : base(handle)
         {
             
@@ -26,7 +30,7 @@ namespace StudyBugApp
         /// <param name="sender"></param>
         partial void FacebookLogin_TouchUpInside(UIButton sender)
         {
-            var auth = new OAuth2Authenticator(clientId: "351547255592863", scope: "", authorizeUrl: new Uri("https://m.facebook.com/v3.1/dialog/oauth/"), redirectUrl: new Uri("http://www.facebook.com/connect/login_success.html"));
+            var auth = new OAuth2Authenticator(clientId: "351547255592863", scope: "", authorizeUrl: new Uri("https://m.facebook.com/dialog/oauth/"), redirectUrl: new Uri("https://www.facebook.com/connect/login_success.html"));
             auth.Completed += Auth_Completed;
             var ui = auth.GetUI();
             PresentViewController(ui, true, null);
@@ -40,23 +44,32 @@ namespace StudyBugApp
         {
             if (e.IsAuthenticated)
             {
-                var request = new OAuth2Request("GET", new Uri("https://graph.facebook.com/me?fields=name,picture,cover,birthday"), null, e.Account);
+                var request = new OAuth2Request("GET", new Uri("https://graph.facebook.com/me?fields=id,first_name,last_name,picture"), null, e.Account);
                 var response = await request.GetResponseAsync();
                 var user = JsonValue.Parse(response.GetResponseText());
-                var fbName = user["name"];
-                var fbCover = user["cover"]["source"];
-                var fbProfile = user["picture"]["data"]["url"];
+                fbID = user["id"].ToString();
+                fbFirstName = user["first_name"].ToString();
+                fbLastName = user["last_name"].ToString();
+                fbProfile = user["picture"]["data"]["url"].ToString();
                 
             }
             DismissViewController(true, null);
+            
         }
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();
             
         }
-    
-    
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "FacebookUser")
+            { 
+                var dashboard = segue.DestinationViewController as DashboardViewController;
+                dashboard.Name = fbFirstName;
+            }
+        }
         partial void BtnLogIn_TouchUpInside(UIButton sender)
         {
             if (!IsValidCredential())
@@ -94,12 +107,6 @@ namespace StudyBugApp
 
             return valid;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-       
-
         
     }
 }
