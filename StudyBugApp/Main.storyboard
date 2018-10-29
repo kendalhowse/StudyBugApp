@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="226" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="8"/>
+            <point key="canvasLocation" x="645" y="36"/>
         </scene>
         <scene sceneID="5040">
             <objects>
@@ -345,6 +345,7 @@
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="23661" translatesAutoresizingMaskIntoConstraints="NO" image="logo.jpg">
                                 <rect key="frame" x="0.0" y="98" width="414" height="222"/>
+                                <rect key="contentStretch" x="0" y="0" width="1" height="1"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -407,10 +408,56 @@
             </objects>
             <point key="canvasLocation" x="16" y="958"/>
         </scene>
+        <scene sceneID="36555">
+            <objects>
+                <viewController id="36556" sceneMemberID="viewController" customClass="GameLaunchViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="36553"/>
+                        <viewControllerLayoutGuide type="bottom" id="36554"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="36557">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.7686274509803922" green="0.7686274509803922" blue="0.396078431372549" alpha="1"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="36967" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="177" y="480" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="36968" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="177" y="536" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exit"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="36969" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="63" y="10" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="36970" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="StudyCube.JPG">
+                                <rect key="frame" x="87" y="133" width="240" height="296"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="StartGame" destination="36967" id="name-outlet-36967"/>
+                        <outlet property="Exit" destination="36968" id="name-outlet-36968"/>
+                        <outlet property="Game" destination="36557" id="name-outlet-36557"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36558" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="396"/>
+        </scene>
     </scenes>
     <resources>
         <image name="profile.jpeg" width="225" height="225"/>
         <image name="logo.jpg" width="1280" height="720"/>
         <image name="facebook.jpg" width="250" height="250"/>
+        <image name="StudyCube.JPG" width="185" height="230"/>
     </resources>
 </document>

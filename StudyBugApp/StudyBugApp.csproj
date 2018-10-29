@@ -132,6 +132,14 @@
     <Compile Include="CreateUserViewController.designer.cs">
       <DependentUpon>CreateUserViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameLaunchViewController.cs" />
+    <Compile Include="GameLaunchViewController.designer.cs">
+      <DependentUpon>GameLaunchViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameLaunchViewController_.cs" />
+    <Compile Include="GameLaunchViewController_.designer.cs">
+      <DependentUpon>GameLaunchViewController_.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="LoginScreen.cs" />
@@ -148,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\StudyCube.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
