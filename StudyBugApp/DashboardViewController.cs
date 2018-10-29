@@ -7,6 +7,7 @@ namespace StudyBugApp
     public partial class DashboardViewController : UIViewController
     {
         public string Name { get; set;  }
+       
 
         public DashboardViewController (IntPtr handle) : base (handle)
         {

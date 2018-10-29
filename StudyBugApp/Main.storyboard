@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="229" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
-                                <rect key="frame" x="100" y="475" width="215" height="30"/>
+                                <rect key="frame" x="100" y="463" width="215" height="30"/>
                                 <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password" secureTextEntry="YES"/>
@@ -37,7 +37,7 @@
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="475" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="108" y="541" width="198" height="30"/>
+                                <rect key="frame" x="108" y="514" width="198" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.83529411764705885" blue="0.15686274509803921" alpha="1"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -55,23 +55,23 @@
                                 <rect key="frame" x="0.0" y="161" width="414" height="222"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="11347" translatesAutoresizingMaskIntoConstraints="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
-                                <rect key="frame" x="243" y="595" width="28" height="30"/>
+                                <rect key="frame" x="243" y="574" width="28" height="30"/>
                                 <state key="normal" backgroundImage="facebook.jpg">
                                     <color key="titleColor" colorSpace="calibratedRGB" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1"/>
                                 </state>
                                 <connections>
                                     <action selector="FacebookLogin_TouchUpInside:" destination="BYZ-38-t0r" id="13775" eventType="touchUpInside"/>
+                                    <segue id="34725" destination="224" kind="show" identifier="FacebookUser"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14583" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="142" y="599" width="93" height="21"/>
+                                <rect key="frame" x="142" y="578" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15135" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="128" y="654" width="159" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15135" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="128" y="627" width="159" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
@@ -83,29 +83,33 @@
                         <color key="tintColor" colorSpace="calibratedRGB" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1"/>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.996078431372549" green="0.996078431372549" blue="0.996078431372549" alpha="1"/>
                         <constraints>
-                            <constraint id="231" firstItem="229" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80"/>
-                            <constraint id="232" firstAttribute="trailingMargin" secondItem="229" secondAttribute="trailing" constant="79"/>
-                            <constraint id="8682" firstItem="475" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88"/>
-                            <constraint id="8685" firstAttribute="trailingMargin" secondItem="475" secondAttribute="trailing" constant="88"/>
                             <constraint id="9463" firstAttribute="leadingMargin" secondItem="8425" secondAttribute="leading" constant="20"/>
                             <constraint id="9465" firstItem="8425" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="20"/>
                             <constraint id="9467" firstItem="8425" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="161"/>
                             <constraint id="9468" firstItem="8425" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width"/>
                             <constraint id="9469" firstItem="8425" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width"/>
                             <constraint id="9741" firstAttribute="bottom" secondItem="8425" secondAttribute="bottom" constant="353"/>
-                            <constraint id="11074" firstItem="228" firstAttribute="width" secondItem="229" secondAttribute="width"/>
                             <constraint id="11075" firstItem="228" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80"/>
                             <constraint id="11076" firstItem="228" firstAttribute="top" secondItem="8425" secondAttribute="bottom" constant="42"/>
-                            <constraint id="13235" firstItem="475" firstAttribute="top" secondItem="229" secondAttribute="bottom" constant="36"/>
-                            <constraint id="13236" firstItem="wfy-db-euE" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="165"/>
-                            <constraint id="15127" firstItem="14583" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="28"/>
-                            <constraint id="15128" firstItem="wfy-db-euE" firstAttribute="top" secondItem="14583" secondAttribute="bottom" constant="116"/>
-                            <constraint id="15129" firstAttribute="trailingMargin" secondItem="14583" secondAttribute="trailing" constant="159"/>
-                            <constraint id="15130" firstItem="14583" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="122"/>
-                            <constraint id="15131" firstAttribute="trailingMargin" secondItem="11347" secondAttribute="trailing" constant="123"/>
-                            <constraint id="15132" firstItem="11347" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="24"/>
-                            <constraint id="15133" firstItem="wfy-db-euE" firstAttribute="top" secondItem="11347" secondAttribute="bottom" constant="111"/>
-                            <constraint id="15134" firstItem="11347" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="223"/>
+                            <constraint id="33053" firstAttribute="trailingMargin" secondItem="228" secondAttribute="trailing" constant="79"/>
+                            <constraint id="33054" firstAttribute="trailingMargin" secondItem="229" secondAttribute="trailing" constant="79"/>
+                            <constraint id="33055" firstItem="229" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="33057" firstItem="475" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88"/>
+                            <constraint id="33058" firstAttribute="trailingMargin" secondItem="475" secondAttribute="trailing" constant="88"/>
+                            <constraint id="33059" firstItem="475" firstAttribute="top" secondItem="229" secondAttribute="bottom" constant="21"/>
+                            <constraint id="33084" firstItem="14583" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="122"/>
+                            <constraint id="33085" firstItem="14583" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="34"/>
+                            <constraint id="33086" firstAttribute="trailingMargin" secondItem="14583" secondAttribute="trailing" constant="159"/>
+                            <constraint id="33087" firstItem="wfy-db-euE" firstAttribute="top" secondItem="14583" secondAttribute="bottom" constant="137"/>
+                            <constraint id="33089" firstItem="11347" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="223"/>
+                            <constraint id="33091" firstAttribute="trailingMargin" secondItem="11347" secondAttribute="trailing" constant="123"/>
+                            <constraint id="33096" firstItem="11347" firstAttribute="top" secondItem="475" secondAttribute="bottom" constant="30"/>
+                            <constraint id="33097" firstAttribute="bottom" secondItem="11347" secondAttribute="bottom" constant="132"/>
+                            <constraint id="33098" firstItem="11347" firstAttribute="top" secondItem="8425" secondAttribute="bottom" constant="191"/>
+                            <constraint id="33099" firstItem="15135" firstAttribute="top" secondItem="14583" secondAttribute="centerY" constant="38"/>
+                            <constraint id="33100" firstItem="15135" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="108"/>
+                            <constraint id="33101" firstAttribute="trailingMargin" secondItem="15135" secondAttribute="trailing" constant="107"/>
+                            <constraint id="33102" firstItem="wfy-db-euE" firstAttribute="top" secondItem="15135" secondAttribute="bottom" constant="79"/>
                         </constraints>
                     </view>
                     <connections>
