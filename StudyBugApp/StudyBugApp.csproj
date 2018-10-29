@@ -128,6 +128,7 @@
     <InterfaceDefinition Include="ViewController1.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardLibraryViewController.cs" />
     <Compile Include="CreateUserViewController.cs" />
     <Compile Include="CreateUserViewController.designer.cs">
       <DependentUpon>CreateUserViewController.cs</DependentUpon>
