@@ -128,10 +128,17 @@
     <InterfaceDefinition Include="ViewController1.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardLibraryViewController.cs" />
+    <Compile Include="CardLibraryViewController_.cs" />
+    <Compile Include="CardLibraryViewController_.designer.cs">
+      <DependentUpon>CardLibraryViewController_.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUserViewController.cs" />
     <Compile Include="CreateUserViewController.designer.cs">
       <DependentUpon>CreateUserViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditViewController.cs" />
+    <Compile Include="EditViewController.designer.cs">
+      <DependentUpon>EditViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -142,6 +149,10 @@
     <Compile Include="DashboardViewController.cs" />
     <Compile Include="DashboardViewController.designer.cs">
       <DependentUpon>DashboardViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCardViewController.cs" />
+    <Compile Include="NewCardViewController.designer.cs">
+      <DependentUpon>NewCardViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
