@@ -23,6 +23,9 @@ namespace StudyBugApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            // Hide navigation bar in login page
+            NavigationController.NavigationBarHidden = true;
         }
         /// <summary>
         /// Event handler for Facebook login button. Establishes connection to Facebook's authentication, opens new UI for login.

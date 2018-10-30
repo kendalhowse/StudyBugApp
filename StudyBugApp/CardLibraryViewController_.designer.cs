@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
@@ -16,14 +16,66 @@ namespace StudyBugApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCard_1 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCard_2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCard_3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnCard_4 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton newCard { get; set; }
 
-        [Action ("UIButton35794_TouchUpInside:")]
+        [Action ("BtnCard_1_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton35794_TouchUpInside (UIKit.UIButton sender);
+        partial void BtnCard_1_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("BtnCard_2_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnCard_2_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("BtnCard_3_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnCard_3_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("BtnCard_4_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnCard_4_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("NewCard_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void NewCard_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnCard_1 != null) {
+                btnCard_1.Dispose ();
+                btnCard_1 = null;
+            }
+
+            if (btnCard_2 != null) {
+                btnCard_2.Dispose ();
+                btnCard_2 = null;
+            }
+
+            if (btnCard_3 != null) {
+                btnCard_3.Dispose ();
+                btnCard_3 = null;
+            }
+
+            if (btnCard_4 != null) {
+                btnCard_4.Dispose ();
+                btnCard_4 = null;
+            }
+
             if (newCard != null) {
                 newCard.Dispose ();
                 newCard = null;
