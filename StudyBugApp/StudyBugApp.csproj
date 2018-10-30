@@ -153,6 +153,10 @@
     <Compile Include="CardLibraryViewController_.designer.cs">
       <DependentUpon>CardLibraryViewController_.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScoreItemDatabase.cs" />
+    <Compile Include="ScoreItemRepositoryADO.cs" />
+    <Compile Include="ScoreItemManager.cs" />
+    <Compile Include="ScoreItem.cs" />
     <Compile Include="User.cs" />
     <Compile Include="User.designer.cs">
       <DependentUpon>User.cs</DependentUpon>
