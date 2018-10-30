@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5041">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -231,6 +231,9 @@
                                         <state key="normal" title="Games">
                                             <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                         </state>
+                                        <connections>
+                                            <segue id="50894" destination="39745" kind="show"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="38733" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                         <rect key="frame" x="2" y="256" width="97" height="30"/>
@@ -774,7 +777,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39747" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-19"/>
+            <point key="canvasLocation" x="1388" y="-27"/>
         </scene>
         <scene sceneID="39751">
             <objects>
@@ -835,7 +838,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stepper>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="42425" translatesAutoresizingMaskIntoConstraints="NO" text="Width" fixedFrame="YES">
-                                <rect key="frame" x="170" y="342" width="96" height="30"/>
+                                <rect key="frame" x="170" y="342" width="65" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
