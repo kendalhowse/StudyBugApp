@@ -11,19 +11,11 @@ using UIKit;
 
 namespace StudyBugApp
 {
-    [Register ("NewCardViewController")]
-    partial class NewCardViewController
+    [Register ("HighScoreViewController")]
+    partial class HighScoreViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField cardName { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (cardName != null) {
-                cardName.Dispose ();
-                cardName = null;
-            }
         }
     }
 }

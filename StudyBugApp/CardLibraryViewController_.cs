@@ -10,9 +10,9 @@ namespace StudyBugApp
         {
         }
 
-        partial void UIButton35794_TouchUpInside(UIButton sender)
-        {
-            throw new NotImplementedException();
-        }
+        //partial void UIButton35794_TouchUpInside(UIButton sender)
+        //{
+         //   throw new NotImplementedException();
+        //}
     }
 }

@@ -34,6 +34,10 @@ namespace StudyBugApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnMenu_Activated (UIKit.UIBarButtonItem sender);
 
+        [Action ("UIButton7363_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton7363_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (btnMenu != null) {
