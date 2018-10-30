@@ -3,6 +3,10 @@ using System;
 using UIKit;
 using Xamarin.Auth;
 using System.Json;
+using System.IO;
+using SQLite;
+using SQLitePCL;
+using System.Collections.Generic;
 
 namespace StudyBugApp
 {
@@ -11,6 +15,9 @@ namespace StudyBugApp
     /// </summary>
     public partial class LoginScreen : UIViewController
     {
+        object guard = new object();
+        private string _pathToDatabase;
+
         public string fbID;
         public string fbFirstName;
         public string fbLastName;
@@ -23,6 +30,11 @@ namespace StudyBugApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            //path to put database file in iPhone device
+            var docmuments = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            _pathToDatabase = Path.Combine("..", "sqlite2.db");
+
         }
         /// <summary>
         /// Event handler for Facebook login button. Establishes connection to Facebook's authentication, opens new UI for login.
@@ -83,6 +95,13 @@ namespace StudyBugApp
                 this.PerformSegue("Push", this);
             }
         }
+
+
+
+
+
+
+
         /// <summary>
         /// Validates the data. Both fields must have data entry, and that data must exist in database.
         /// </summary>
@@ -95,18 +114,53 @@ namespace StudyBugApp
             {
                 valid = false;
             }
-            //else if (){
-                // check database to see if the user exists
-              
-            //}
-            else
+            else if (IsUserCredintialsExist())
             {
                 valid = true;
+
             }
-            
+
 
             return valid;
         }
-        
+
+        public Boolean IsUserCredintialsExist()
+        {
+            Boolean isRight = false;
+
+            SQLiteConnection conn = new SQLiteConnection(_pathToDatabase);
+            conn.CreateTable<User66>();
+            User66 users = new User66();
+            List<User66> userList;
+            lock (guard)
+            {
+                userList = conn.Table<User66>().ToList();
+            }
+
+            if (userList.Count != 0)
+            {
+                foreach (var p in userList)
+                {
+                    if (p.Email.Equals(emailField.Text.Trim()) && p.Password.Equals(passwordField.Text.Trim()))
+                    {
+                        isRight = true;
+                    }
+                }
+
+            }
+            else
+            {
+                isRight = false;
+                var errorAlertController = UIAlertController.Create("Error", "User not exist please Sign up first.", UIAlertControllerStyle.Alert);
+                errorAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                PresentViewController(errorAlertController, true, null);
+
+            }
+
+            conn.Close();
+
+            return isRight;
+        }
+
     }
 }

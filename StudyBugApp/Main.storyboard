@@ -319,7 +319,7 @@
                                 <connections>
                                     <action selector="BtnLogIn_TouchUpInside:" destination="23650" id="23649" eventType="touchUpInside"/>
                                     <action selector="SignUp_TouchUpInside:" destination="21131" id="29939" eventType="touchUpInside"/>
-                                    <segue id="32653" destination="224" kind="show" identifier="SignUp"/>
+                                    <segue id="37042" destination="BYZ-38-t0r" kind="show"/>
                                 </connections>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>

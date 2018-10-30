@@ -2,6 +2,10 @@
 using System;
 using UIKit;
 
+using SQLite;
+using System.IO;
+using System.Collections.Generic;
+
 namespace StudyBugApp
 {
     /// <summary>
@@ -10,12 +14,15 @@ namespace StudyBugApp
     /// </summary>
     public partial class CreateUserViewController : UIViewController
     {
+        object guard = new object();
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
 
+        private string _pathToDatabase;
 
         public CreateUserViewController (IntPtr handle) : base (handle)
         {
@@ -23,6 +30,8 @@ namespace StudyBugApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            _pathToDatabase = Path.Combine("..", "sqlite2.db");
         }
         /// <summary>
         /// This method validates that the data entry is suitable. No fields can be null or empty, and password and confirm password must be the same.
@@ -78,9 +87,56 @@ namespace StudyBugApp
 
         public void InsertNewUser()
         {
-            // This method needs connection to database
-            // will be called once data has been validated
-            // Insert all attributes: FirstName, LastName, Email and Password
+            SQLiteConnection db = new SQLiteConnection(_pathToDatabase);
+            User66 users = new User66();
+            users.FirstName = FirstName;
+            users.LastName = LastName;
+            users.Password = Password;
+            users.Email = Email;
+            lock (guard)
+            {
+                db.CreateTable<User66>();
+            }
+
+
+            List<User66> userList;
+
+            lock (guard)
+            {
+                userList = db.Table<User66>().ToList();
+            }
+
+            if (userList.Count != 0)
+            {
+
+                foreach (var p in userList)
+                {
+                    if (!p.Email.Equals(email.Text.Trim()))
+                    {
+                        lock (guard)
+                        {
+                            db.Insert(users);
+                        }
+                    }
+                    else
+                    {
+                        var errorAlertController = UIAlertController.Create("Error", "Email already exist please login.", UIAlertControllerStyle.Alert);
+                        errorAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                        PresentViewController(errorAlertController, true, null);
+                    }
+                }
+            }
+            else
+            {
+                lock (guard)
+                {
+                    db.Insert(users);
+                }
+            }
+
+
+
+            db.Close();
         }
 
 
