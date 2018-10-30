@@ -11,8 +11,8 @@ using UIKit;
 
 namespace StudyBugApp
 {
-    [Register ("NewCardViewController")]
-    partial class NewCardViewController
+    [Register ("StudyCubesViewController")]
+    partial class StudyCubesViewController
     {
         void ReleaseDesignerOutlets ()
         {
