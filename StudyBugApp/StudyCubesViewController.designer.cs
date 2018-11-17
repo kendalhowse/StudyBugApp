@@ -7,13 +7,19 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace StudyBugApp
 {
     [Register ("StudyCubesViewController")]
     partial class StudyCubesViewController
     {
+        [Outlet]
+        UIKit.UIButton [] columnButtons { get; set; }
+
+
+        [Action ("MakeMove:")]
+        partial void MakeMove (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
         }

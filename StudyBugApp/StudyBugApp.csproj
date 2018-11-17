@@ -149,10 +149,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1Board.cs" />
     <Compile Include="CardLibraryViewController_.cs" />
     <Compile Include="CardLibraryViewController_.designer.cs">
       <DependentUpon>CardLibraryViewController_.cs</DependentUpon>
     </Compile>
+    <Compile Include="1Move.cs" />
+    <Compile Include="1Player.cs" />
     <Compile Include="ScoreItemDatabase.cs" />
     <Compile Include="ScoreItemRepositoryADO.cs" />
     <Compile Include="ScoreItemManager.cs" />
