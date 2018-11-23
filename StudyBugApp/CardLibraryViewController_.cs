@@ -1,11 +1,17 @@
 ﻿using Foundation;
+using SQLite;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using UIKit;
 
 namespace StudyBugApp
 {
     public partial class CardLibraryViewController : UIViewController
     {
+        object guard = new object();
+        private string _pathToDatabase;
+
         public CardLibraryViewController (IntPtr handle) : base (handle)
         {
         }
@@ -13,8 +19,8 @@ namespace StudyBugApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            NavigationController.NavigationBarHidden = false;
+            _pathToDatabase = Path.Combine("..", "sqlite2.db");
+            NavigationController.NavigationBarHidden = true;
             NavigationItem.RightBarButtonItem = btnMenu;
             viewMenu.Hidden = true;
         }
@@ -34,29 +40,36 @@ namespace StudyBugApp
             this.PerformSegue("segueNewCard", this);
         }
 
-        partial void BtnCard_1_TouchUpInside(UIButton sender)
+        
+
+        public void GetAllCard()
         {
-            this.PerformSegue("segueEditCard", this);
+            SQLiteConnection db = new SQLiteConnection(_pathToDatabase);
+            List<Card> cards;
+            lock (guard)
+            {
+                db.CreateTable<Card>();
+            }
+            lock (guard)
+            {
+                cards = db.Table<Card>().ToList();
+            }
+
+            if (cards.Count == 0)
+            {
+                var errorAlertController = UIAlertController.Create("Error", "there is no cards in library.", UIAlertControllerStyle.Alert);
+                errorAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                PresentViewController(errorAlertController, true, null);
+
+            }
+
+            db.Close();
+
         }
 
-        partial void BtnCard_2_TouchUpInside(UIButton sender)
+        partial void UIButton99633_TouchUpInside(UIButton sender)
         {
-            this.PerformSegue("segueEditCard", this);
-        }
-
-        partial void BtnCard_3_TouchUpInside(UIButton sender)
-        {
-            this.PerformSegue("segueEditCard", this);
-        }
-
-        partial void BtnCard_4_TouchUpInside(UIButton sender)
-        {
-            this.PerformSegue("segueEditCard", this);
-        }
-
-        partial void BtnMenu_Activated(UIBarButtonItem sender)
-        {
-            viewMenu.Hidden = !viewMenu.Hidden;
+            GetAllCard();
         }
     }
 }

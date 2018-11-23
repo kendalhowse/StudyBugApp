@@ -16,7 +16,27 @@ namespace StudyBugApp
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView answer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnMenu { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton canelbtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView question { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton saveBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField topic { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -26,11 +46,40 @@ namespace StudyBugApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnMenu_Activated (UIKit.UIBarButtonItem sender);
 
+        [Action ("SaveBtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void SaveBtn_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (answer != null) {
+                answer.Dispose ();
+                answer = null;
+            }
+
             if (btnMenu != null) {
                 btnMenu.Dispose ();
                 btnMenu = null;
+            }
+
+            if (canelbtn != null) {
+                canelbtn.Dispose ();
+                canelbtn = null;
+            }
+
+            if (question != null) {
+                question.Dispose ();
+                question = null;
+            }
+
+            if (saveBtn != null) {
+                saveBtn.Dispose ();
+                saveBtn = null;
+            }
+
+            if (topic != null) {
+                topic.Dispose ();
+                topic = null;
             }
 
             if (viewMenu != null) {
