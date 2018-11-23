@@ -42,10 +42,6 @@ namespace StudyBugApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void UIButton99633_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("UIButton99688_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton99688_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (btnMenu != null) {

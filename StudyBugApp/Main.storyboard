@@ -452,7 +452,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69382">
-                                <rect key="frame" x="0.0" y="70" width="186" height="666"/>
+                                <rect key="frame" x="0.0" y="70" width="186" height="616"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69383">
@@ -550,17 +550,6 @@
                                         <real key="value" value="9"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="99688" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="246" y="353" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
-                                </state>
-                                <connections>
-                                    <segue id="99769" destination="80805" kind="show"/>
-                                    <action selector="UIButton99688_TouchUpInside:" destination="34934" id="121183" eventType="touchUpInside"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26666666666666666" green="0.25882352941176473" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
@@ -720,7 +709,8 @@
                                     <color key="titleColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
                                 </state>
                                 <connections>
-                                    <segue id="96322" destination="34934" kind="push"/>
+                                    <action selector="Canelbtn_TouchUpInside:" destination="35976" id="131986" eventType="touchUpInside"/>
+                                    <segue id="134844" destination="34934" kind="show"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1226,6 +1216,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue id="119588" destination="80794" kind="show" identifier="backToList"/>
+                                    <action selector="BackBtn_TouchUpInside:" destination="80805" id="131454" eventType="touchUpInside"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1233,6 +1224,7 @@
                     <connections>
                         <outlet property="questionF" destination="80811" id="name-outlet-80811"/>
                         <outlet property="answerF" destination="80812" id="name-outlet-80812"/>
+                        <outlet property="BackBtn" destination="119379" id="name-outlet-119379"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80807" userLabel="First Responder" sceneMemberID="firstResponder"/>

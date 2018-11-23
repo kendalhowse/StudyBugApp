@@ -90,5 +90,9 @@ namespace StudyBugApp
             db.Close();
         }
 
+        partial void BackBtn_TouchUpInside(UIButton sender)
+        {
+            this.DismissViewController(true, null);
+        }
     }
 }

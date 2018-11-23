@@ -20,7 +20,8 @@ namespace StudyBugApp
         {
             base.ViewDidLoad();
             _pathToDatabase = Path.Combine("..", "sqlite2.db");
-            NavigationController.NavigationBarHidden = true;
+          //  NavigationController.SetHasNavigationBar(this, true);
+            NavigationController.NavigationBarHidden = false;
             NavigationItem.RightBarButtonItem = btnMenu;
             viewMenu.Hidden = true;
         }
@@ -70,6 +71,16 @@ namespace StudyBugApp
         partial void UIButton99633_TouchUpInside(UIButton sender)
         {
             GetAllCard();
+            this.DismissViewController(true, null);
         }
+
+        partial void BtnMenu_Activated(UIBarButtonItem sender)
+        {
+            viewMenu.Hidden = !viewMenu.Hidden;
+        }
+
+
+
+
     }
 }

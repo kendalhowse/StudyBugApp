@@ -56,6 +56,7 @@ namespace StudyBugApp
                 //var errorAlertController = UIAlertController.Create("Message", "Card Saved successfully.", UIAlertControllerStyle.Alert);
                 //errorAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
                 //PresentViewController(errorAlertController, true, null);
+                this.DismissViewController(true, null);
 
             }
         }
@@ -97,6 +98,9 @@ namespace StudyBugApp
             db.Close();
         }
 
-
+        partial void Canelbtn_TouchUpInside(UIButton sender)
+        {
+            this.DismissViewController(true, null);
+        }
     }
 }

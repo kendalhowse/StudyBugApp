@@ -46,6 +46,10 @@ namespace StudyBugApp
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnMenu_Activated (UIKit.UIBarButtonItem sender);
 
+        [Action ("Canelbtn_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void Canelbtn_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("SaveBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void SaveBtn_TouchUpInside (UIKit.UIButton sender);
