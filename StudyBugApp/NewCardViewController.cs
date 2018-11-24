@@ -5,6 +5,11 @@ using SQLite;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// The new card page which allows the user to create a new card. 
+    /// Page Design Author: Nisini Dias,
+    /// Page functionality Author: Ahmed Mohammed
+    /// </summary>
     public partial class NewCardViewController : UIViewController
     {
 

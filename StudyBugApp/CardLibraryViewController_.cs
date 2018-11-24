@@ -7,6 +7,11 @@ using UIKit;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// The Dashboard screen for the Card Library, Connects to new card page and the edit card page.
+    /// Page Design Author: Nisini Dias,
+    /// Page functionality Author: Ahmed Mohammed
+    /// </summary>
     public partial class CardLibraryViewController : UIViewController
     {
         object guard = new object();

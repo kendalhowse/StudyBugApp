@@ -4,6 +4,10 @@ using UIKit;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// The edit card page which allows you to edit the selected card. But the functionality isn't set up or completed. 
+    /// Page Design Author: Nisini Dias
+    /// </summary>
     public partial class EditViewController : UIViewController
     {
         public string CardName { get; set; }
