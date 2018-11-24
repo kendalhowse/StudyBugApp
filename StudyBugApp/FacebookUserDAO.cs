@@ -8,6 +8,10 @@ using UIKit;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// Data access object interface for Facebook users. 
+    /// Author: Kendal Howse
+    /// </summary>
     interface FacebookUserDAO
     {
         /// <summary>

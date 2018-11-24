@@ -11,6 +11,7 @@ namespace StudyBugApp
 {
     /// <summary>
     /// Data access object to represent a Facebook User.
+    /// Author: Kendal Howse
     /// </summary>
     [Table("FacebookUser")]
     class FacebookUser

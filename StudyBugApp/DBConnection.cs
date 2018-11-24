@@ -10,13 +10,19 @@ using System.IO;
 
 namespace StudyBugApp
 {
-
+    /// <summary>
+    /// Used to connect to database.
+    /// Author: Kendal Howse
+    /// </summary>
     class DBConnection
     {
         public static string DBName = "StudyBugApp.db3";
         public static string DBPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), DBName);
         public static SQLiteConnection db;
 
+        /// <summary>
+        /// Creates the database file.
+        /// </summary>
         public void CreateDB()
         {
             bool exists = File.Exists(DBPath);

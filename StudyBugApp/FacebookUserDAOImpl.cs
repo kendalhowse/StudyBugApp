@@ -8,10 +8,19 @@ using UIKit;
 
 namespace StudyBugApp
 {
+    /// <summary>
+    /// Data acces object for Facebook Users. 
+    /// Author: Kendal Howse
+    /// </summary>
     class FacebookUserDAOImpl : FacebookUserDAO
     {
         DBConnection DB = new DBConnection();
         object guard = new object();
+        /// <summary>
+        /// Returns all FacebookUsers in teh database.
+        /// Author: Kendal Howse
+        /// </summary>
+        /// <returns></returns>
         public List<FacebookUser> GetAllFacebookUsers()
         {
             List<FacebookUser> userList;
@@ -23,7 +32,12 @@ namespace StudyBugApp
 
             return userList;
         }
-
+        /// <summary>
+        /// Gets a Facebook user by ID.
+        /// Author: Kendal Howse
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public FacebookUser GetFacebookUserByID(int ID)
         {
             FacebookUser user = new FacebookUser();
@@ -37,6 +51,11 @@ namespace StudyBugApp
             return user;
         }
 
+        /// <summary>
+        /// Inserts a Facebook User in the database.
+        /// Author: Kendal Howse
+        /// </summary>
+        /// <param name="fbUser"></param>
         public void InsertFacebookUser(FacebookUser fbUser)
         {
             lock (guard)
@@ -44,7 +63,13 @@ namespace StudyBugApp
                 DB.GetDB().Insert(fbUser);
             }
         }
-
+        /// <summary>
+        /// Updates a Facebook Users last login date.
+        /// Author: Kendal Howse
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public FacebookUser UpdateFacebookUserLoginTime(string login, int ID)
         {
             FacebookUser user = new FacebookUser();
