@@ -9,6 +9,7 @@ namespace StudyBugApp
     /// The new card page which allows the user to create a new card. 
     /// Page Design Author: Nisini Dias,
     /// Page functionality Author: Ahmed Mohammed
+    /// Page Navigation functionality with passing data between pages: Nandita Ghosh
     /// </summary>
     public partial class NewCardViewController : UIViewController
     {
@@ -16,7 +17,7 @@ namespace StudyBugApp
 
 
         object guard = new object();
-        private string _pathToDatabase;
+        string _pathToDatabase = Path.Combine("..", "sqlite2.db");
 
         public string Question { get; private set; }
         public string Answer { get; private set; }
@@ -29,6 +30,11 @@ namespace StudyBugApp
         {
         }
 
+
+        /// <summary>
+        /// Updates View after loading in order to add navigation panel.
+        /// Author: Nandita Ghosh
+        /// </summary>
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -36,10 +42,13 @@ namespace StudyBugApp
             NavigationController.NavigationBarHidden = false;
             NavigationItem.RightBarButtonItem = btnMenu;
             viewMenu.Hidden = true;
-            
-            _pathToDatabase = Path.Combine("..", "sqlite2.db");
         }
 
+        /// <summary>
+        /// Toggle side menu panel.
+        /// Author: Nandita Ghosh
+        /// </summary>
+        /// <param name="sender">Sender.</param>
         partial void BtnMenu_Activated(UIBarButtonItem sender)
         {
             viewMenu.Hidden = !viewMenu.Hidden;

@@ -11,26 +11,36 @@ namespace StudyBugApp
     /// The Dashboard screen for the Card Library, Connects to new card page and the edit card page.
     /// Page Design Author: Nisini Dias,
     /// Page functionality Author: Ahmed Mohammed
+    /// Page Navigation functionality with passing data between pages: Nandita Ghosh
     /// </summary>
     public partial class CardLibraryViewController : UIViewController
     {
         object guard = new object();
-        private string _pathToDatabase;
+        string _pathToDatabase = Path.Combine("..", "sqlite2.db");
 
         public CardLibraryViewController (IntPtr handle) : base (handle)
         {
         }
 
+        /// <summary>
+        /// Updates View after loading in order to add navigation panel.
+        /// Author: Nandita Ghosh
+        /// </summary>
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            _pathToDatabase = Path.Combine("..", "sqlite2.db");
           //  NavigationController.SetHasNavigationBar(this, true);
             NavigationController.NavigationBarHidden = false;
             NavigationItem.RightBarButtonItem = btnMenu;
             viewMenu.Hidden = true;
         }
 
+        /// <summary>
+        /// Prepares for segue to pass card information to next view.
+        /// Author: Nandita Ghosh
+        /// </summary>
+        /// <param name="segue">Segue.</param>
+        /// <param name="sender">Sender.</param>
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             if (segue.Identifier == "segueEditCard")
@@ -41,6 +51,11 @@ namespace StudyBugApp
             }
         }
 
+        /// <summary>
+        /// Click events for new card button which perform seque to navigate to New Card view.
+        /// Author: Nandita Ghosh
+        /// </summary>
+        /// <param name="sender">Sender.</param>
         partial void NewCard_TouchUpInside(UIButton sender)
         {
             this.PerformSegue("segueNewCard", this);
@@ -79,6 +94,11 @@ namespace StudyBugApp
             this.DismissViewController(true, null);
         }
 
+        /// <summary>
+        /// Toggle side menu panel.
+        /// Author: Nandita Ghosh
+        /// </summary>
+        /// <param name="sender">Sender.</param>
         partial void BtnMenu_Activated(UIBarButtonItem sender)
         {
             viewMenu.Hidden = !viewMenu.Hidden;
