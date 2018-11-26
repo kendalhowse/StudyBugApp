@@ -6,7 +6,7 @@ namespace StudyBugApp
 {
     /// <summary>
     /// The edit card page which allows you to edit the selected card. But the functionality isn't set up or completed. 
-    /// Page Design Author: Daniel Reilander
+    /// Page Design Author: Ahmed Mohammed
     /// Page Functionality: Nandita Ghosh
     /// </summary>
     public partial class StudyCubesViewController : UIViewController
