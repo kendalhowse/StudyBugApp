@@ -158,7 +158,7 @@ namespace StudyBugApp
         }
         /// <summary>
         /// Checks if the user exists in the database
-        /// Author: Ahmed Mohammed
+        /// Author: Ahmed Mohammed and Nandita Ghosh
         /// </summary>
         /// <returns></returns>
         public Boolean IsUserCredentialsExist()

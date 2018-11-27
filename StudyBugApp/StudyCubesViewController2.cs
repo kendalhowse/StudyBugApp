@@ -7,19 +7,19 @@ using CoreGraphics;
 using Foundation;
 using GameplayKit;
 using UIKit;
-
+//Code based on sample project "four in a row from Xamarin's site at: https://developer.xamarin.com/samples/monotouch/ios9/FourInARow/
+//Written/modified by Daniel Reilander
 namespace StudyBugApp
 {
     public partial class StudyCubesViewController2 : UIViewController
     {
+        //instantiating CAShapeLayer object
+        CAShapeLayer[][] cubeLayers;
 
-        const int NanoSecondsPerSeond = 1000000000;
-
-        GKMinMaxStrategist strategist;
-        CAShapeLayer[][] chipLayers;
         Board board;
-        UIBezierPath chipPath;
+        UIBezierPath cubePath;
 
+        //swift constructer for serialized studycubes controller
         [Export("initWithCoder:")]
         public StudyCubesViewController2(NSCoder coder) : base(coder)
         {
@@ -28,50 +28,52 @@ namespace StudyBugApp
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            strategist = new GKMinMaxStrategist
-            {
-                MaxLookAheadDepth = 7,
-                RandomSource = new GKARC4RandomSource()
-            };
-
+            
+            //generating the columns based on board width
             var columns = new CAShapeLayer[Board.Width][];
             for (int column = 0; column < Board.Width; column++)
                 columns[column] = new CAShapeLayer[Board.Height];
 
-            chipLayers = columns;
+            cubeLayers = columns;
             ResetBoard();
         }
 
         public override void ViewDidLayoutSubviews()
         {
             var button = columnButtons[0];
+            //size of the object (uses the button frame to determine size)
             nfloat lenght = NMath.Min(button.Frame.Width - 10, button.Frame.Height / 6 - 10);
+
+            //creating the object
             var rect = new CGRect(0f, 0f, lenght, lenght);
-            chipPath = UIBezierPath.FromRect(rect);
 
-            for (int i = 0; i < chipLayers.Length; i++)
+            //Creating the vector/object plus the object path
+            cubePath = UIBezierPath.FromRect(rect);
+
+
+            for (int i = 0; i < cubeLayers.Length; i++)
             {
-                for (int j = 0; j < chipLayers[i].Length; j++)
+                for (int j = 0; j < cubeLayers[i].Length; j++)
                 {
-                    CAShapeLayer chip = chipLayers[i][j];
+                    CAShapeLayer cube = cubeLayers[i][j];
 
-                    if (chip == null)
+                    if (cube == null)
                         continue;
 
-                    chip.Path = chipPath.CGPath;
-                    chip.Frame = chipPath.Bounds;
-                    chip.Position = PositionForChipLayerAtColumnRow(i, j);
+                    cube.Path = cubePath.CGPath;
+                    cube.Frame = cubePath.Bounds;
+                    cube.Position = PositionForCubeLayerAtColumnRow(i, j);
                 }
             }
         }
-
+        //Event handler for pressing on the column buttons - adds a cube in a column when you tap the screen
         partial void MakeMove(UIButton sender)
         {
             var column = (int)sender.Tag;
             if (!board.CanMoveInColumn(column))
                 return;
 
-            board.AddChipInColumn(board.CurrentPlayer.Chip, column);
+            board.AddCubeInColumn(board.CurrentPlayer.Cube, column);
             UpdateButton(sender);
             UpdateGame();
         }
@@ -81,47 +83,47 @@ namespace StudyBugApp
             var column = (int)button.Tag;
             button.Enabled = board.CanMoveInColumn(column);
             int row = Board.Height;
-            var chip = Chip.None;
+            var cube = Cube.None;
 
-            while (chip == Chip.None && row > 0)
-                chip = board.ChipInColumnRow(column, --row);
+            while (cube == Cube.None && row > 0)
+                cube = board.CubeInColumnRow(column, --row);
 
-            if (chip != Chip.None)
-                AddChipLayerAtColumnRowColor(column, row, Player.PlayerForChip(chip).Color);
+            if (cube != Cube.None)
+                AddCubeLayerAtColumnRowColor(column, row, Player.PlayerForCube(cube).Color);
         }
 
-        CGPoint PositionForChipLayerAtColumnRow(int column, int row)
+        CGPoint PositionForCubeLayerAtColumnRow(int column, int row)
         {
             UIButton columnButton = columnButtons[column];
             nfloat xOffset = columnButton.Frame.GetMidX();
-            nfloat yStride = chipPath.Bounds.Height + 10;
+            nfloat yStride = cubePath.Bounds.Height + 10;
             nfloat yOffset = columnButton.Frame.GetMaxY() - yStride / 2;
             return new CGPoint(xOffset, yOffset - yStride * row);
         }
 
-        void AddChipLayerAtColumnRowColor(int column, int row, UIColor color)
+        void AddCubeLayerAtColumnRowColor(int column, int row, UIColor color)
         {
-            int count = chipLayers[column].Count(c => c != null);
+            int count = cubeLayers[column].Count(c => c != null);
             if (count < row + 1)
             {
-                var newChip = (CAShapeLayer)CAShapeLayer.Create();
-                newChip.Path = chipPath.CGPath;
-                newChip.Frame = chipPath.Bounds;
-                newChip.FillColor = color.CGColor;
-                newChip.Position = PositionForChipLayerAtColumnRow(column, row);
+                var newCube = (CAShapeLayer)CAShapeLayer.Create();
+                newCube.Path = cubePath.CGPath;
+                newCube.Frame = cubePath.Bounds;
+                newCube.FillColor = color.CGColor;
+                newCube.Position = PositionForCubeLayerAtColumnRow(column, row);
 
-                View.Layer.AddSublayer(newChip);
+                View.Layer.AddSublayer(newCube);
                 CABasicAnimation animation = CABasicAnimation.FromKeyPath("position.y");
-                animation.From = NSNumber.FromNFloat(newChip.Frame.Height);
-                animation.To = NSNumber.FromNFloat(newChip.Position.Y);
+                animation.From = NSNumber.FromNFloat(newCube.Frame.Height);
+                animation.To = NSNumber.FromNFloat(newCube.Position.Y);
                 animation.Duration = 0.5;
 
                 animation.TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseIn);
-                newChip.AddAnimation(animation, null);
-                chipLayers[column][row] = newChip;
+                newCube.AddAnimation(animation, null);
+                cubeLayers[column][row] = newCube;
             }
         }
-
+        //method to reset the game board on game launch - as well as pressing "play again" after loss
         void ResetBoard()
         {
             board = new Board();
@@ -129,27 +131,28 @@ namespace StudyBugApp
                 UpdateButton(button);
 
             UpdateUI();
-            strategist.GameModel = board;
+            
 
-            foreach (var innerArray in chipLayers)
+            foreach (var innerArray in cubeLayers)
             {
                 for (int j = 0; j < innerArray.Length; j++)
                     innerArray[j]?.RemoveFromSuperLayer();
                 Array.Clear(innerArray, 0, innerArray.Length);
             }
         }
-
+        //updates the game state and checks for win/loss conditions
         void UpdateGame()
         {
             string gameOverTitle = string.Empty;
 
             if (board.IsWin(board.CurrentPlayer))
-                gameOverTitle = string.Format("{0} Wins!", board.CurrentPlayer.Name);
+                gameOverTitle = string.Format("{0} Wins!", "Danny");
             else if (board.IsFull)
                 gameOverTitle = "You Lose!";
 
             if (!string.IsNullOrEmpty(gameOverTitle))
             {
+                //Generates the alert popup with "play again" button
                 var alert = UIAlertController.Create(gameOverTitle, null, UIAlertControllerStyle.Alert);
                 var alertAction = UIAlertAction.Create("Play Again", UIAlertActionStyle.Default, _ => ResetBoard());
                 alert.AddAction(alertAction);
@@ -157,58 +160,19 @@ namespace StudyBugApp
                 return;
             }
 
-            //board.CurrentPlayer = board.CurrentPlayer.Opponent;
             UpdateUI();
         }
 
+        //Updates the title bar of the UI specifically at the moment, could have been used to hold a score for user but not implemented
         void UpdateUI()
         {
+            //setting the title of the game page
             NavigationItem.Title = string.Format("Study Cubes");
-            //NavigationController.NavigationBar.BackgroundColor = board.CurrentPlayer.Color;
+            // Setting the title background color to blue
             NavigationController.NavigationBar.BackgroundColor = UIColor.Blue;
-#if USE_AI_PLAYER
-			if (board.CurrentPlayer.Chip != Chip.Black)
-				return;
 
-			foreach (UIButton button in columnButtons)
-				button.Enabled = false;
-
-			var spinner = new UIActivityIndicatorView (UIActivityIndicatorViewStyle.Gray);
-			spinner.StartAnimating ();
-
-			NavigationItem.LeftBarButtonItem = new UIBarButtonItem (spinner);
-
-			DispatchQueue.DefaultGlobalQueue.DispatchAsync (() => {
-				var startegistTime = DateTime.Now;
-				int column = ColumnForAIMove ();
-				var delta = DateTime.Now - startegistTime;
-				var aiTimeCeiling = TimeSpan.FromSeconds (2);
-
-				var delay = Math.Min ((aiTimeCeiling - delta).Seconds, aiTimeCeiling.Seconds);
-
-				DispatchQueue.MainQueue.DispatchAfter (new DispatchTime (DispatchTime.Now, delay * NanoSecondsPerSeond),
-					() => MakeAIMoveInColumn (column));
-			});
-#endif
         }
 
-        int ColumnForAIMove()
-        {
-            var aiMove = strategist.GetBestMove(board.CurrentPlayer) as Move;
-            if (aiMove == null)
-                throw new Exception("AI should always be able to move (detect endgame before invoking AI)");
 
-            return aiMove.Column;
-        }
-
-        void MakeAIMoveInColumn(int column)
-        {
-            NavigationItem.LeftBarButtonItem = null;
-            board.AddChipInColumn(board.CurrentPlayer.Chip, column);
-            foreach (var button in columnButtons)
-                UpdateButton(button);
-
-            UpdateGame();
-        }
     }
 }

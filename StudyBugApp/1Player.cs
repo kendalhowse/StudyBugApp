@@ -7,10 +7,11 @@ using Foundation;
 using UIKit;
 
 using GameplayKit;
-
+//This code is based on code from Xamarin sample project "four in a row" at https://developer.xamarin.com/samples/monotouch/ios9/FourInARow/
+//written/modified by Daniel Reilander
 namespace StudyBugApp
 {
-    public enum Chip
+    public enum Cube
     {
         None = 0,
         Red,
@@ -21,43 +22,45 @@ namespace StudyBugApp
     {
 
         public const int CountToWin = 999;
+        //number of neighboring cubes necessary to cause "elimination" - not implemented
+        public const int CountToEliminate = 2;
 
-        public static Player RedPlayer
+        public static Player CurrentPlayer
         {
             get
             {
-                return PlayerForChip(Chip.Black);
+                return PlayerForCube(Cube.Black);
             }
         }
-
+        //not currently used
         public static Player BlackPlayer
         {
             get
             {
-                return PlayerForChip(Chip.Black);
+                return PlayerForCube(Cube.Black);
             }
         }
-
-        public int PlayerID
+        //this is where the profile for the current player would be - instead of setting cube to be black, colour would be randomized.  
+        public static Player thisPlayer
         {
-            [Export("playerId")]
             get
             {
-                return (int)Chip;
+                return PlayerForCube(Cube.Black);
             }
         }
-
-        public Chip Chip { get; private set; }
-
+      
+        //getters and setters for cube objects
+        public Cube Cube { get; private set; }
+        //setting the possible colors of cubes
         public UIColor Color
         {
             get
             {
-                switch (Chip)
+                switch (Cube)
                 {
-                    case Chip.Red:
+                    case Cube.Red:
                         return UIColor.Red;
-                    case Chip.Black:
+                    case Cube.Black:
                         return UIColor.Black;
                     default:
                         return UIColor.Clear;
@@ -65,37 +68,8 @@ namespace StudyBugApp
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                switch (Chip)
-                {
-                    case Chip.Red:
-                        return "Red";
-                    case Chip.Black:
-                        return "Black";
-                    default:
-                        return string.Empty;
-                }
-            }
-        }
 
-        public Player Opponent
-        {
-            get
-            {
-                switch (Chip)
-                {
-                    case Chip.Red:
-                        return Player.BlackPlayer;
-                    case Chip.Black:
-                        return Player.RedPlayer;
-                    default:
-                        return null;
-                }
-            }
-        }
+       
 
         static Player[] allPlayers;
         public static Player[] AllPlayers
@@ -103,21 +77,21 @@ namespace StudyBugApp
             get
             {
                 allPlayers = allPlayers ?? new[] {
-                    new Player (Chip.Red),
-                    new Player (Chip.Black)
+                    new Player (Cube.Red),
+                    new Player (Cube.Black)
                 };
                 return allPlayers;
             }
         }
 
-        public Player(Chip chip)
+        public Player(Cube cube)
         {
-            Chip = chip;
+            Cube = cube;
         }
 
-        public static Player PlayerForChip(Chip chip)
+        public static Player PlayerForCube(Cube cube)
         {
-            return (chip == Chip.None) ? null : AllPlayers[(int)chip - 1];
+            return (cube == Cube.None) ? null : AllPlayers[(int)cube - 1];
         }
     }
 }

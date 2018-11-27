@@ -149,6 +149,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1Board.cs" />
+    <Compile Include="1Move.cs" />
+    <Compile Include="1Player.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardDetailsViewController.cs" />
     <Compile Include="CardDetailsViewController.designer.cs">
@@ -170,6 +173,10 @@
     <Compile Include="ShowCardsListQA.cs" />
     <Compile Include="ShowCardsListQA.designer.cs">
       <DependentUpon>ShowCardsListQA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudyCubesViewController2.cs" />
+    <Compile Include="StudyCubesViewController2.designer.cs">
+      <DependentUpon>StudyCubesViewController2.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="User.designer.cs">

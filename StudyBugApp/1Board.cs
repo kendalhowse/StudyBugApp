@@ -4,19 +4,25 @@ using System.Linq;
 
 using Foundation;
 using GameplayKit;
-
+/// <summary>
+//This code is based on code from Xamarin sample project "four in a row" at https://developer.xamarin.com/samples/monotouch/ios9/FourInARow/
+//written/modified by Daniel Reilander
+/// </summary>
 namespace StudyBugApp
 {
+    //This is the class for the the gameplay environment
     public class Board : NSObject, IGKGameModel
     {
-
+        //Number of Columns
         public const int Width = 7;
-        public const int Height = 12;
+        //Number of cubes that can be stacked (height limit)
+        public const int Height = 11;
 
-        public Chip[] Cells { get; private set; }
+        public Cube[] Cells { get; private set; }
 
         public Player CurrentPlayer { get; set; }
 
+        //determines if game is full by looping through columns and seeing if they're full
         public bool IsFull
         {
             get
@@ -31,54 +37,55 @@ namespace StudyBugApp
             }
         }
 
+        //sets current player - could be adapted to multiple players with database functionality, but doesn't work
         public Board()
         {
-            CurrentPlayer = Player.RedPlayer;
-            Cells = new Chip[Width * Height];
+            CurrentPlayer = Player.thisPlayer;
+            Cells = new Cube[Width * Height];
         }
-
-        public Chip ChipInColumnRow(int column, int row)
+        //method to test if a cube exists at a given location in the grid
+        public Cube CubeInColumnRow(int column, int row)
         {
             var index = row + column * Height;
-            return (index >= Cells.Length) ? Chip.None : Cells[index];
+            return (index >= Cells.Length) ? Cube.None : Cells[index];
         }
-
+        //test to see if a cube can move into a column - used to test the "isfull" boolean
         public bool CanMoveInColumn(int column)
         {
             return NextEmptySlotInColumn(column) >= 0;
         }
-
-        public void AddChipInColumn(Chip chip, int column)
+        //method to set where the next cube will be added in a column
+        public void AddCubeInColumn(Cube cube, int column)
         {
             int row = NextEmptySlotInColumn(column);
             if (row >= 0)
-                SetChipInColumnRow(chip, column, row);
+                SetCubeInColumnRow(cube, column, row);
         }
-
+        //returns all players to the game-model, right now serves no purpose other than to return the only player
         public IGKGameModelPlayer[] GetPlayers()
         {
             return Player.AllPlayers;
         }
-
+        //current player is always the same, but could change with database implementation for different players/settings
         public IGKGameModelPlayer GetActivePlayer()
         {
             return CurrentPlayer;
         }
-
+        //using objective c to return the game object
         public NSObject Copy(NSZone zone)
         {
             var board = new Board();
             board.SetGameModel(this);
             return board;
         }
-
+        //using swift to set the IGKGameModel for current player - again, multiple player functionality not yet implemented
         public void SetGameModel(IGKGameModel gameModel)
         {
             var board = (Board)gameModel;
-            UpdateChipsFromBoard(board);
+            UpdateCubesFromBoard(board);
             CurrentPlayer = board.CurrentPlayer;
         }
-
+        //IGKGameModelUpdate - saves an array of all of the moves made to record the game/board state
         public IGKGameModelUpdate[] GetGameModelUpdates(IGKGameModelPlayer player)
         {
             var moves = new List<Move>();
@@ -91,156 +98,36 @@ namespace StudyBugApp
 
             return moves.ToArray();
         }
-
+        //applies game update, responsible for actually adding cubes based on commands passed to it from update method
         public void ApplyGameModelUpdate(IGKGameModelUpdate gameModelUpdate)
         {
-            AddChipInColumn(CurrentPlayer.Chip, ((Move)gameModelUpdate).Column);
-            CurrentPlayer = CurrentPlayer.Opponent;
+            AddCubeInColumn(CurrentPlayer.Cube, ((Move)gameModelUpdate).Column);
         }
 
-        [Export("scoreForPlayer:")]
-        public nint ScorForPlayer(Player player)
-        {
-            var playerRunCounts = RunCountsForPlayer(player);
-            int playerTotal = playerRunCounts.Sum();
-
-            var opponentRunCounts = RunCountsForPlayer(player.Opponent);
-            int opponentTotal = opponentRunCounts.Sum();
-
-            // Return the sum of player runs minus the sum of opponent runs.
-            return playerTotal - opponentTotal;
-        }
-
+        //boolean to determine if the player can win
         public bool IsWin(Player player)
         {
-            var runCounts = RunCountsForPlayer(player);
-            return runCounts.Max() >= Player.CountToWin;
+            return false;
         }
 
-        bool IsLoss(Player player)
-        {
-            return IsWin(player.Opponent);
-        }
+        //this detects the neighboring cubes for a player - b
 
-        int[] RunCountsForPlayer(Player player)
-        {
-            var chip = player.Chip;
-            var counts = new List<int>();
 
-            // Detect horizontal runs.
-            for (int row = 0; row < Height; row++)
-            {
-                int runCount = 0;
-                for (int column = 0; column < Width; column++)
-                {
-                    if (ChipInColumnRow(column, row) == chip)
-                    {
-                        ++runCount;
-                    }
-                    else
-                    {
-                        if (runCount > 0)
-                            counts.Add(runCount);
-                        runCount = 0;
-                    }
-                }
-
-                if (runCount > 0)
-                    counts.Add(runCount);
-            }
-
-            // Detect vertical runs.
-            for (int column = 0; column < Width; column++)
-            {
-                int runCount = 0;
-                for (int row = 0; row < Height; row++)
-                {
-                    if (ChipInColumnRow(column, row) == chip)
-                    {
-                        ++runCount;
-                    }
-                    else
-                    {
-                        if (runCount > 0)
-                            counts.Add(runCount);
-                        runCount = 0;
-                    }
-                }
-
-                if (runCount > 0)
-                    counts.Add(runCount);
-            }
-
-            // Detect diagonal (northeast) runs
-            for (int startColumn = -Height; startColumn < Width; startColumn++)
-            {
-                int runCount = 0;
-                for (int offset = 0; offset < Height; offset++)
-                {
-                    int column = startColumn + offset;
-                    if (column < 0 || column > Width)
-                        continue;
-
-                    if (ChipInColumnRow(column, offset) == chip)
-                    {
-                        ++runCount;
-                    }
-                    else
-                    {
-                        if (runCount > 0)
-                            counts.Add(runCount);
-                        runCount = 0;
-                    }
-                }
-
-                if (runCount > 0)
-                    counts.Add(runCount);
-            }
-
-            // Detect diagonal (northwest) runs
-            for (int startColumn = 0; startColumn < Width + Height; startColumn++)
-            {
-                int runCount = 0;
-                for (int offset = 0; offset < Height; offset++)
-                {
-                    int column = startColumn - offset;
-                    if (column < 0 || column > Width)
-                        continue;
-
-                    if (ChipInColumnRow(column, offset) == chip)
-                    {
-                        ++runCount;
-                    }
-                    else
-                    {
-                        if (runCount > 0)
-                            counts.Add(runCount);
-                        runCount = 0;
-                    }
-                }
-
-                if (runCount > 0)
-                    counts.Add(runCount);
-            }
-
-            return counts.ToArray();
-        }
-
-        void UpdateChipsFromBoard(Board otherBoard)
+        void UpdateCubesFromBoard(Board otherBoard)
         {
             Array.Copy(otherBoard.Cells, Cells, Cells.Length);
         }
-
-        void SetChipInColumnRow(Chip chip, int column, int row)
+        //inserts cubes into desginated space on grid
+        void SetCubeInColumnRow(Cube cube, int column, int row)
         {
-            Cells[row + column * Height] = chip;
+            Cells[row + column * Height] = cube;
         }
-
+        //finds the next empty spot in column
         int NextEmptySlotInColumn(int column)
         {
             for (int row = 0; row < Height; row++)
             {
-                if (ChipInColumnRow(column, row) == Chip.None)
+                if (CubeInColumnRow(column, row) == Cube.None)
                     return row;
             }
 
