@@ -98,6 +98,8 @@ namespace StudyBugApp
             db.Close();
         }
 
+
+
         partial void Canelbtn_TouchUpInside(UIButton sender)
         {
             this.DismissViewController(true, null);
